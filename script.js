@@ -1,11 +1,12 @@
-let number = 15;
+var number = 23515625621;
+var cutNumber = number;
+var quantity = 0;
+var i = 1;
 
-for (i = 1; i <= number; i++) {
-  if (number % i === 0 ) {
-    if(i > 1) {
-      if(i < number) {
-    console.log (i);
-    }
-    }
-    }
-  }
+while (Math.abs(number / i) >= 1) {
+  quantity ++;
+  i *= 10;
+  console.log(quantity);
+}
+
+console.log(quantity)
