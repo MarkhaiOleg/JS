@@ -1,15 +1,23 @@
-let days = 9; // Дней в периоде
-let period = 3; // Как часто я ем протеин (раз в три дня)
-let workDayAmount = 200; // Количество протеина в будние
-let weekendAmount = 100; // Количество протеина в выходные
-let total = 0;
+let expectedUsers = 1000;
 
-for (let i = 1; i <= days; i++ ) {
-  if (i%period === 0) {
-    total += workDayAmount;
-  if (i%7 === 6 || i%7 === 0) {
-    total -= workDayAmount;  
-    total += weekendAmount;
-  }
-  }
-  }
+let usersByDay = [817, 1370, 752, 1247, 681, 1120, 915, 1281, 875, 1341, 757, 610, 812, 1170, 769, 1261, 845, 1289, 515, 1247, 845, 1311, 741, 1239, 812, 638, 877, 1242, 1159, 1372];
+
+// Рисуем график посещаемости
+keks.plot(usersByDay, expectedUsers);
+
+// Суммируем посещаемость
+let totalUsers = 0;
+for (let i = 0; i <= usersByDay.length - 1; i++) {
+  totalUsers += usersByDay[i];
+}
+
+
+// Рассчитываем среднее значение посещаемости
+let averageUsers = totalUsers / usersByDay.length;
+console.log('Средняя посещаемость: ' + averageUsers);
+
+if (averageUsers > expectedUsers) {
+  console.log('Посещаемость великолепна. Продолжай в том же духе!');
+} else {
+  console.log('Посещаемость так себе. Нужно поднапрячься!');
+}
