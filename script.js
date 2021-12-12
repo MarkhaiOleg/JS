@@ -1,32 +1,12 @@
-let expectedUsers = 1000;
+// Алфавит
+let symbols = ['А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ё', 'Ж', 'З', 'И', 'Й', 'К', 'Л', 'М', 'Н', 'О', 'П', 'Р', 'С', 'Т', 'У', 'Ф', 'Х', 'Ц', 'Ч', 'Ш', 'Щ', 'Ъ', 'Ы', 'Ь', 'Э', 'Ю', 'Я', 'а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ы', 'ь', 'э', 'ю', 'я', ' ', '.', ',', '—', '!'];
 
-let usersByDay = [817, 1370, 752, 1247, 681, 1120, 915, 1281, 875, 1341, 757, 610, 812, 1170, 769, 1261, 845, 1289, 515, 1247, 845, 1311, 741, 1239, 812, 638, 877, 1242, 1159, 1372];
+// Закодированное сообщение
+let encodedSymbols = [18, 38, 46, 62, 66, 50, 33, 41, 66, 49, 48, 38, 58, 62, 68, 66, 48, 37, 42, 47, 66, 50, 33, 41, 66, 49, 48, 51, 49, 42, 67];
 
-// Рисуем график посещаемости
-keks.plot(usersByDay, expectedUsers);
+// Раскодированное сообщение
+let decodedMessage = '';
 
-// Суммируем посещаемость и анализируем провалы
-let totalUsers = 0;
-let minUsers = expectedUsers - 300;
-let badDays = [];
-
-for (let i = 0; i <= usersByDay.length - 1; i++) {
-  totalUsers += usersByDay[i];
-  if (usersByDay[i] < minUsers) {
-    badDays[i] = expectedUsers - usersByDay[i];
-  } else {
-    badDays[i] = 0;
+for (i = 0;i <= encodedSymbols.length - 1;i++) {
+  decodedMessage += symbols[encodedSymbols[i]];
   }
-}
-
-keks.plot(badDays, 100);
-
-// Рассчитываем среднее значение посещаемости
-let averageUsers = totalUsers / usersByDay.length;
-console.log('Средняя посещаемость: ' + averageUsers);
-
-if (averageUsers > expectedUsers) {
-  console.log('Посещаемость великолепна. Продолжай в том же духе!');
-} else {
-  console.log('Посещаемость так себе. Нужно поднапрячься!');
-}
