@@ -5,12 +5,21 @@ let usersByDay = [817, 1370, 752, 1247, 681, 1120, 915, 1281, 875, 1341, 757, 61
 // Рисуем график посещаемости
 keks.plot(usersByDay, expectedUsers);
 
-// Суммируем посещаемость
+// Суммируем посещаемость и анализируем провалы
 let totalUsers = 0;
+let minUsers = expectedUsers - 300;
+let badDays = [];
+
 for (let i = 0; i <= usersByDay.length - 1; i++) {
   totalUsers += usersByDay[i];
+  if (usersByDay[i] < minUsers) {
+    badDays[i] = expectedUsers - usersByDay[i];
+  } else {
+    badDays[i] = 0;
+  }
 }
 
+keks.plot(badDays, 100);
 
 // Рассчитываем среднее значение посещаемости
 let averageUsers = totalUsers / usersByDay.length;
