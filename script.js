@@ -1,4 +1,4 @@
-let groceries = ['чай', 'шпроты', 'печенье', 'сахар', 'чипсы'];
-let shoppingList = '';
+let numbers = [2, 4, 7, 4, 7, 2];
+let number = 4;
 
-shoppingList = groceries.join(', ');
+let lastIndex = numbers.lastIndexOf(number);
