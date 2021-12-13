@@ -1,24 +1,10 @@
-let usersByDay = [4, 2, 1, 3];
+let usersByDay = [1, 2, 3, 4, 5];
 console.log(usersByDay);
+let median;
 
-
-for (let currentIndex = 0; currentIndex <= usersByDay.length - 2; currentIndex++) {
-  
-
-let minValue = usersByDay[currentIndex];
-
-for (let j = currentIndex + 1; j <= usersByDay.length - 1; j++) {
-  if (usersByDay[j] < minValue) {
-    minValue = usersByDay[j];
-    let swap = usersByDay[currentIndex];
-    usersByDay[currentIndex] = minValue;
-    usersByDay[j] = swap;
-    console.log('Меняю местами ' + swap + ' и ' + minValue);
-    console.log('Массив сейчас: ' + usersByDay);
+if (usersByDay.length % 2 !== 0) {
+  let medianIndex = (usersByDay.length - 1) / 2;
+  console.log(medianIndex);
+  median = usersByDay[medianIndex];
+  console.log('Медиана массива usersByDay = ' + median);
   }
-}
-}
-
-console.log('На позиции ' + currentIndex + ' находится минимальный элемент ' + minValue);
-
-
