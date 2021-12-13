@@ -1,12 +1,13 @@
-// Алфавит
-let symbols = ['А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ё', 'Ж', 'З', 'И', 'Й', 'К', 'Л', 'М', 'Н', 'О', 'П', 'Р', 'С', 'Т', 'У', 'Ф', 'Х', 'Ц', 'Ч', 'Ш', 'Щ', 'Ъ', 'Ы', 'Ь', 'Э', 'Ю', 'Я', 'а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ы', 'ь', 'э', 'ю', 'я', ' ', '.', ',', '—', '!'];
+let usersByDay = [2, 3, 4, 1, 10];
+console.log(usersByDay);
 
-// Закодированное сообщение
-let encodedSymbols = [18, 38, 46, 62, 66, 50, 33, 41, 66, 49, 48, 38, 58, 62, 68, 66, 48, 37, 42, 47, 66, 50, 33, 41, 66, 49, 48, 51, 49, 42, 67];
+let currentIndex = 0;
+let minValue = usersByDay[currentIndex];
+for (let j = currentIndex + 1; j <= usersByDay.length - 1; j++) {
+  if (usersByDay[j] < minValue) {
+  minValue = usersByDay[j];
+  console.log('Новый минимальный элемент: ' + minValue);
+} 
+}
 
-// Раскодированное сообщение
-let decodedMessage = '';
-
-for (i = 0;i <= encodedSymbols.length - 1;i++) {
-  decodedMessage += symbols[encodedSymbols[i]];
-  }
+console.log('Минимальный элемент: ' + minValue);
