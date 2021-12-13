@@ -1,51 +1,34 @@
-let expectedUsers = 1000;
+// Состав смузи
 
-let usersByDay = [817, 581, 1370, 752, 1247, 681, 1120, 915, 875, 1341, 757, 610, 812, 741, 1139, 812, 638, 877, 1242, 1159, 1372, 1170, 845, 1289, 515, 1247, 769, 1261, 2805, 1201];
+let liquids = ['вода', 'молоко', 'сок', 'чай', 'йогурт'];
+let fruits = ['киви', 'банан', 'персик', 'манго', 'груша', 'ананас'];
+let greens = ['мята', 'шпинат', 'руккола', 'петрушка', 'базилик'];
 
-// Рисуем график посещаемости
-keks.plot(usersByDay, expectedUsers);
+// Выбор посетителя
 
-// Суммируем посещаемость
-let totalUsers = 0;
-for (let i = 0; i <= usersByDay.length - 1; i++) {
-  totalUsers += usersByDay[i];
-}
+let chosenLiquid = 1;
+let chosenFruit = 3;
+let chosenGreen = 2;
 
-// Рассчитываем среднее значение посещаемости
-let averageUsers = totalUsers / usersByDay.length;
-console.log('Средняя посещаемость: ' + averageUsers);
+// Заказ
 
-if (averageUsers > expectedUsers) {
-  console.log('Посещаемость великолепна. Продолжай в том же духе!');
-} else {
-  console.log('Посещаемость так себе. Нужно поднапрячься!');
-}
 
-// Сортируем массив
-
-for (let i = 0; i <= usersByDay.length - 2; i++) {
-  let minValue = usersByDay[i];
-
-  for (let j = i + 1; j <= usersByDay.length - 1; j++) {
-    if (usersByDay[j] < minValue) {
-      minValue = usersByDay[j];
-      let swap = usersByDay[i];
-      usersByDay[i] = minValue;
-      usersByDay[j] = swap;
-    }
+for (let i = 0; i <= liquids.length; i++) {
+  if (chosenLiquid -1  === i) {console.log(liquids[i]);
+  chosenLiquid = liquids[i];}
   }
-}
+  
+for (let j = 0; j <= fruits.length; j++) {
+  if (chosenFruit - 1   === j) {console.log(fruits[j]);
+  chosenFruit = fruits[j];}
+  }
+  
+for (let k = 0; k <= greens.length; k++) {
+  if (chosenGreen - 1  === k) {console.log(liquids[k]);
+  chosenGreen = greens[k];}
+  }
+  
+ let order = 'Основа — ' + chosenLiquid + ', фрукт — ' + chosenFruit + ', зелень — ' + chosenGreen;
+ 
+ console.log(order);
 
-// Рассчитываем медиану
-
-let median;
-if (usersByDay.length % 2 !== 0) {
-  let medianIndex = (usersByDay.length - 1) / 2;
-  median = usersByDay[medianIndex];
-} else {
-  let leftIndex = usersByDay.length / 2 - 1;
-  let rightIndex = usersByDay.length / 2;
-  median = (usersByDay[leftIndex] + usersByDay[rightIndex]) / 2;
-}
-
-console.log('Медианная посещаемость: ' + median);
