@@ -1,12 +1,18 @@
-let books = ['Улисс', 'Маугли', 'Сияние', 'Ревизор', 'Гамлет', 'Обломов', 'Дюймовочка', 'Шантарам', 'Вий', 'Сильмариллион', 'Оно'];
-let minNumber = 3;
-let maxNumber = 5;
-let filteredBooks = [];
+// Алфавит
+let symbols = ['А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ё', 'Ж', 'З', 'И', 'Й', 'К', 'Л', 'М', 'Н', 'О', 'П', 'Р', 'С', 'Т', 'У', 'Ф', 'Х', 'Ц', 'Ч', 'Ш', 'Щ', 'Ъ', 'Ы', 'Ь', 'Э', 'Ю', 'Я', 'а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ы', 'ь', 'э', 'ю', 'я', ' ', '.', ',', '—', '!'];
 
-for (let i = 0; i < books.length;i++) {
-  if ( books[i].length <= maxNumber && books[i].length >= minNumber) {
-    filteredBooks.push(books[i]);
-    }
+// Смещение
+let shift = 10;
+
+// Закодированное сообщение
+let encodedSymbols = [8, 28, 36, 52, 56, 40, 23, 31, 56, 39, 38, 28, 48, 52, 58, 56, 38, 27, 32, 37, 56, 40, 23, 31, 56, 39, 38, 41, 39, 32, 57];
+
+// Раскодированное сообщение
+let decodedMessage = '';
+
+for (let i= 0 ; i <= encodedSymbols.length - 1;i++) {
+  let index = encodedSymbols[i] + shift;
+  if (index > symbols.length) {
+    decodedMessage += symbols[index - symbols.length]
+    } else {decodedMessage += symbols[index]}
   }
-
-console.log(filteredBooks);
