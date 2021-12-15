@@ -1,12 +1,9 @@
-let usersData = ['Виталий Иванович', 'Иннокентий Петрович', 'Александр Александрович', 'Игорь Олегович', 'Евгений Петрович', 'Игнат Денисович', 'Сергей Александрович', 'Семён Петрович'];
-let query = 'Александрович';
-let matchingUsers = 0;
+let fibonacciNumbers = [1, 1];
+let numbersQuantity = 7;
+let total = fibonacciNumbers.length + numbersQuantity;
 
-
-for (let i = 0; i <usersData.length ;i++) {
- if (usersData[i].indexOf(query) >= 0) {
-   matchingUsers++;
-   }
+for (let i = 2;i < total;i++) {
+  fibonacciNumbers.push(fibonacciNumbers[i-1] + fibonacciNumbers [i-2]);
   }
   
-console.log( matchingUsers);
+console.log (fibonacciNumbers);
