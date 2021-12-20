@@ -1,39 +1,14 @@
-var catalogData = [
-  {
-    isAvailable: true,
-    isSpecial: false
-  },
-  {
-    isAvailable: false,
-    isSpecial: false
-  },
-  {
-    isAvailable: true,
-    isSpecial: true
-  },
-  {
-    isAvailable: true,
-    isSpecial: false
-  },
-  {
-    isAvailable: false,
-    isSpecial: false
-  }
-];
+let numbers = [1, 4, 5, 9, 2, 5, 1];
+let uniqueNumbers = [];
 
-var updateCards = function (products) {
-  var elements = document.querySelectorAll('.product');
-  for (var i = 0; i < elements.length; i++) {
-    var element = elements[i];
-    console.log(element);
-    var product = products[i];
-    console.log(product);
-    var availabilityClass = 'product--available';
-    if (!product.isAvailable) {
-      availabilityClass = 'product--unavailable';      
-    }
-    element.classList.add(availabilityClass);
-  }
-};
-
-updateCards(catalogData);
+for (let i = 0; i < numbers.length; i++){
+  
+  let haveRepeat = false; 
+  
+  for (let j = numbers.length; j >= 0; j--){
+    if (i !== j && numbers[i] === numbers[j]){ 
+      haveRepeat = true; 
+    } 
+}
+if(!haveRepeat ){uniqueNumbers.push(numbers[i])}
+}
