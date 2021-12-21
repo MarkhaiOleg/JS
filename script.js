@@ -1,14 +1,9 @@
-let numbers = [1, 4, 5, 9, 2, 5, 1];
-let uniqueNumbers = [];
+let numbers = [1, 3, 5, 7, 9, 11];
 
-for (let i = 0; i < numbers.length; i++){
-  
-  let haveRepeat = false; 
-  
-  for (let j = numbers.length; j >= 0; j--){
-    if (i !== j && numbers[i] === numbers[j]){ 
-      haveRepeat = true; 
-    } 
-}
-if(!haveRepeat ){uniqueNumbers.push(numbers[i])}
+for (let i = 0; i < numbers.length / 2; i++) {
+ let swapLast =  numbers[numbers.length - (1 + i)];
+ let swapFirst = numbers[i];
+ 
+ numbers[i] = swapLast;
+ numbers[numbers.length - (1 + i)] = swapFirst;
 }
