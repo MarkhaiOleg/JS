@@ -1,13 +1,5 @@
-const sequenceSum = (begin, end) => {
-  // BEGIN (write your solution here)
-  if (begin > end) {
-    return NaN;
-  }
-  if (begin === end) {
-    return begin;
-  }
-  return begin + sequenceSum(begin + 1, end);
-  // END
-};
+var specialProduct = document.querySelector('.product:nth-child(2)');
+console.log(specialProduct);
 
-export default sequenceSum;
+var unavailableProduct = document.querySelector('.product:last-child');
+console.log(unavailableProduct);
