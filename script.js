@@ -1,5 +1,33 @@
-var specialProduct = document.querySelector('.product:nth-child(2)');
-console.log(specialProduct);
+var catalogData = [
+  {
+    isAvailable: true,
+    isSpecial: false
+  },
+  {
+    isAvailable: false,
+    isSpecial: false
+  },
+  {
+    isAvailable: true,
+    isSpecial: true
+  },
+  {
+    isAvailable: true,
+    isSpecial: false
+  },
+  {
+    isAvailable: false,
+    isSpecial: false
+  }
+];
 
-var unavailableProduct = document.querySelector('.product:last-child');
-console.log(unavailableProduct);
+var updateCards = function (products) {
+  var elements = document.querySelectorAll('.product');
+  for (var i = 0; i < elements.length; i++) {
+  var element = elements[i];
+  console.log(element);
+  element.classList.add('product--available');
+}
+};
+
+updateCards(catalogData);
