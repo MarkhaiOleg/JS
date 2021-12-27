@@ -1,43 +1,7 @@
-var assortmentData = [
-  {
-    inStock: true,
-    isHit: false
-  },
-  {
-    inStock: false,
-    isHit: false
-  },
-  {
-    inStock: true,
-    isHit: true
-  },
-  {
-    inStock: true,
-    isHit: false
-  },
-  {
-    inStock: false,
-    isHit: false
-  }
-];
+var cardList = document.querySelector('.products');
+console.log(cardList.children);
 
-var updateCream = function(goods) {
-  var elements = document.querySelectorAll('.good');
-  for(var i = 0;i < elements.length;i++) {
-  var element = elements[i];
-  var good = goods[i];
-  
-  var availabilityClass = 'good--available';
-  if(!good.inStock){
-  availabilityClass = 'good--unavailable';  
-}
-  element.classList.add(availabilityClass);
-
- if(good.isHit) {
- element.classList.add('good--hit');      
-}
-}
-};
-
-updateCream(assortmentData);
-
+var listItem = document.createElement('li');
+listItem.classList.add('product');
+cardList.appendChild(listItem);
+console.log(cardList.children);
