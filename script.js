@@ -1,46 +1,43 @@
-var catalogData = [
+var assortmentData = [
   {
-    isAvailable: true,
-    isSpecial: false
+    inStock: true,
+    isHit: false
   },
   {
-    isAvailable: false,
-    isSpecial: false
+    inStock: false,
+    isHit: false
   },
   {
-    isAvailable: true,
-    isSpecial: true
+    inStock: true,
+    isHit: true
   },
   {
-    isAvailable: true,
-    isSpecial: false
+    inStock: true,
+    isHit: false
   },
   {
-    isAvailable: false,
-    isSpecial: false
+    inStock: false,
+    isHit: false
   }
 ];
 
-var updateCards = function (products) {
-  var elements = document.querySelectorAll('.product');
-  for (var i = 0; i < elements.length; i++) {
-    var element = elements[i];
-    
-    var product = products[i];
-    
-    var availabilityClass = 'product--available';
-    if (!product.isAvailable) {
-      availabilityClass = 'product--unavailable';
-    }
+var updateCream = function(goods) {
+  var elements = document.querySelectorAll('.good');
+  for(var i = 0;i < elements.length;i++) {
+  var element = elements[i];
+  var good = goods[i];
+  
+  var availabilityClass = 'good--available';
+  if(!good.inStock){
+  availabilityClass = 'good--unavailable';  
+}
+  element.classList.add(availabilityClass);
 
-    element.classList.add(availabilityClass);
-
-    if (product.isSpecial) {
-      element.classList.add('product--special');      
-    }
-    
-  }
+ if(good.isHit) {
+ element.classList.add('good--hit');      
+}
+}
 };
 
-updateCards(catalogData);
+updateCream(assortmentData);
 
