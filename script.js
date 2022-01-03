@@ -1,77 +1,87 @@
 var cardsData = [
   {
-    isAvailable: true,
-    imgUrl: 'device/item-1.jpg',
-    text: 'Селфи-палка для начинающих',
-    price: 200,
-    isSpecial: false
+    inStock: true,
+    imgUrl: 'gllacy/choco.jpg',
+    text: 'Сливочно-кофейное с кусочками шоколада',
+    price: 310,
+    isHit: true,
+    specialOffer: 'Двойная порция сиропа бесплатно!'
   },
   {
-    isAvailable: false,
-    imgUrl: 'device/item-2.jpg',
-    text: 'Профессиональная селфи-палка',
-    price: 1500,
-    isSpecial: false
+    inStock: false,
+    imgUrl: 'gllacy/lemon.jpg',
+    text: 'Сливочно-лимонное с карамельной присыпкой',
+    price: 125,
+    isHit: false
   },
   {
-    isAvailable: true,
-    imgUrl: 'device/item-3.jpg',
-    text: 'Непотопляемая селфи-палка',
-    price: 2500,
-    isSpecial: false
+    inStock: true,
+    imgUrl: 'gllacy/cowberry.jpg',
+    text: 'Сливочное с брусничным джемом',
+    price: 170,
+    isHit: false
   },
   {
-    isAvailable: true,
-    imgUrl: 'device/item-4.jpg',
-    text: 'Селфи-палка «Следуй за мной»',
-    price: 4900,
-    isSpecial: true,
-    specialPrice: 100
+    inStock: true,
+    imgUrl: 'gllacy/cookie.jpg',
+    text: 'Сливочное с кусочками печенья',
+    price: 250,
+    isHit: false
+  },
+  {
+    inStock: true,
+    imgUrl: 'gllacy/creme-brulee.jpg',
+    text: 'Сливочное крем-брюле',
+    price: 190,
+    isHit: false
   }
 ];
 
-var makeElement = function (tagName, className, text) {
+var makeElement = function (tagName,className,text) {
   var element = document.createElement(tagName);
   element.classList.add(className);
-  if (text) {
+  if(text) {
     element.textContent = text;
   }
   return element;
-};
+  };
 
-var createCard = function (product) {
-  var listItem = makeElement('li', 'product');
-
-  var title = makeElement('h2', 'product__title', product.text);
-  listItem.appendChild(title);
-
-  var picture = makeElement('img', 'product__image');
-  picture.src = product.imgUrl;
-  picture.alt = product.text;
-  listItem.appendChild(picture);
-
-  var price = makeElement('p', 'product__price', product.price);
-  listItem.appendChild(price);
-
-  var availabilityClass = 'product--available';
-  if (!product.isAvailable) {
-    availabilityClass = 'product--unavailable';
-  }
+var createCard = function (good) {
+  var listItem = makeElement('li', 'good');
+  var availabilityClass = 'good--available';
+  if (!good.inStock) {
+    availabilityClass = 'good--unavailable';
+    }
   listItem.classList.add(availabilityClass);
-
-  if (product.isSpecial) {
-    listItem.classList.add('product--special');
-    var specialPrice = makeElement('p', 'product__special-price', product.specialPrice);
-    listItem.appendChild(specialPrice);
-  }
-
-  return listItem;
-};
-
-var cardList = document.querySelector('.products');
-
-for (var i = 0; i < cardsData.length;i++) {
- var cardItem = createCard(cardsData[i]);
- cardList.appendChild(cardItem);
   
+  var title = makeElement('h2', 'good__description',good.text);
+  listItem.appendChild(title);
+  
+  var picture = makeElement('img', 'good__image');
+  picture.src = good.imgUrl;
+  picture.alt = good.text;
+  listItem.appendChild(picture);
+  
+  var price = makeElement('p', 'good__price',good.price + '₽/кг' );
+  listItem.appendChild(price);
+  
+  if (good.isHit){
+    listItem.classList.add('good--hit');
+    var specialOffer = makeElement('p','good__special-offer',good.specialOffer);
+   listItem.appendChild(specialOffer);
+    }
+  return listItem;
+  };
+
+var renderCards = function (goods) {
+  var cardList = document.querySelector('.goods');
+  
+  for (i = 0;i<goods.length;i++) {
+  var cardItem = createCard(goods[i]);
+  cardList.appendChild(cardItem);
   }
+  
+
+  };
+  
+renderCards(cardsData);
