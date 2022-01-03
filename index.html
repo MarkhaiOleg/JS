@@ -1,45 +1,37 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-  <meta charset="utf-8">
-  <title>Каталог | Глейси</title>
-  <link rel="stylesheet" href="gllacy/setting.css">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <ul class="goods">
-    <li class="good">
-      <h2 class="good__description">Сливочно-кофейное с кусочками шоколада</h2>
-      <img src="gllacy/choco.jpg" width="220" height="220" alt="Сливочно-кофейное с кусочками шоколада">
-      <p class="good__price">110 ₽/кг</p>
-    </li>
+  <head>
+    <meta charset="utf-8">
+    <title>CandyShop</title>
+    <link href="candy-shop/setting.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+  </head>
+  <body>
+    <section class="card">
+      <div class="card__content">
+        <h1 class="visually-hidden">Магазин мороженого CandyShop</h1>
+        <img class="card__logo" src="candy-shop/candyshop.svg" width="205" height="63" alt="CandyShop">
+        <p class="card__text">Готовим мороженое из самых свежих сливок!</p>
+        <img class="card__img" src="candy-shop/icecream.png" width="196" height="240" alt="Мороженое">
+      </div>
+      <div class="card__controls">
+        <a href="contacts.html" class="card__button button-open">Показать контакты</a>
+      </div>
+    </section>
 
-    <li class="good">
-      <h2 class="good__description">Сливочно-лимонное с карамельной присыпкой</h2>
-      <img src="gllacy/lemon.jpg" width="220" height="220" alt="Сливочно-лимонное с карамельной присыпкой">
-      <p class="good__price">220 ₽/кг</p>
-    </li>
+    <section class="modal modal--show">
+      <div class="modal__content">
+        <h2 class="visually-hidden">Контакты</h2>
+        <h3>Адрес:</h3>
+        <p>191186, Санкт-Петербург, ул. Большая Конюшенная, д. 19/8</p>
+        <h3>Телефон:</h3>
+        <p>+7 (812) 275-75-75</p>
+        <h3>Почта:</h3>
+        <p>mail@htmlacademy.ru</p>
+        <button class="modal__button button-close" type="button">Закрыть</button>
+      </div>
+    </section>
 
-    <li class="good">
-      <h2 class="good__description">Сливочное с брусничным
-      джемом</h2>
-      <img src="gllacy/cowberry.jpg" width="220" height="220" alt="Сливочное с брусничным джемом">
-      <p class="good__price">310 ₽/кг</p>
-    </li>
-
-    <li class="good">
-      <h2 class="good__description">Сливочное с кусочками печенья</h2>
-      <img src="gllacy/cookie.jpg" width="220" height="220" alt="Сливочное с кусочками
-    печенья">
-      <p class="good__price">400 ₽/кг</p>
-    </li>
-
-    <li class="good">
-      <h2 class="good__description">Сливочное крем-брюле</h2>
-      <img src="gllacy/creme-brulee.jpg" width="220" height="220" alt="Сливочное крем-брюле">
-      <p class="good__price">500 ₽/кг</p>
-    </li>
-  </ul>
-  <script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
