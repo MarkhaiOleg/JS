@@ -1,18 +1,17 @@
-var popup = document.querySelector('.popup');
-var openPopupButoon = document.querySelector('.button-show');
-var closePopupButoon = popup.querySelector('.button-hide');
+var pictures = [
+  'gallery-tomato/tomato-red-large.jpg',
+  'gallery-tomato/tomato-yellow-large.jpg',
+  'gallery-tomato/tomato-strange-large.jpg'
+];
 
-openPopupButoon.addEventListener('click', function(evt) {
-  evt.preventDefault();
-  popup.classList.add('popup--open');
+var thumbnails = document.querySelectorAll('.gallery__picture-preview');
+var fullPhoto = document.querySelector('.full-picture');
+
+var addThumbnailClickHandler = function (preview, picture) {
+    preview.addEventListener('click', function () {
+    fullPhoto.src = picture;
   });
-  
-closePopupButoon.addEventListener('click', function() {
-    popup.classList.remove('popup--open');
-  });
-  
-document.addEventListener('keydown', function(evt){
-  if(evt.keyCode === 27) {
-  popup.classList.remove('popup--open');
-  }
-  })
+};
+
+for (var i = 0; i < thumbnails.length; i++) {
+  addThumbnailClickHandler(thumbnails[i], pictures[i]);
