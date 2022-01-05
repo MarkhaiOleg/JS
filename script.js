@@ -1,17 +1,14 @@
-var pictures = [
-  'gallery-tomato/tomato-red-large.jpg',
-  'gallery-tomato/tomato-yellow-large.jpg',
-  'gallery-tomato/tomato-strange-large.jpg'
-];
+// Контейнер для карточек
+var pool = document.querySelector('.pool');
 
-var thumbnails = document.querySelectorAll('.gallery__picture-preview');
-var fullPhoto = document.querySelector('.full-picture');
+// Получаем шаблон карточки
+var template = document.querySelector('#element-template').content;
+var element = template.querySelector('div');
 
-var addThumbnailClickHandler = function (preview, picture) {
-    preview.addEventListener('click', function () {
-    fullPhoto.src = picture;
-  });
-};
+// Клонируем и наполняем элементы в цикле
 
-for (var i = 0; i < thumbnails.length; i++) {
-  addThumbnailClickHandler(thumbnails[i], pictures[i]);
+for (var i = 1; i <= 10; i++) {
+   var clonedElement = element.cloneNode(true);
+   clonedElement.children[0].textContent = i;
+   pool.appendChild(clonedElement);
+ }
