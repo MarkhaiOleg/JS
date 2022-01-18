@@ -1,46 +1,38 @@
 <!DOCTYPE html>
-<html lang="ru">
-  <head>
-    <meta charset="utf-8">
-    <title>Список дел</title>
-    <link href="style.css" rel="stylesheet">
-  </head>
-  <body>
-    <h1 class="visually-hidden">Список дел</h1>
-    <ul class="todo-list">
-      <li class="todo-list-item">
-        <label>
-          <input class="todo-list-input" type="checkbox">
-          <span>Покормить кота</span>
-        </label>
-      </li>
-      <li class="todo-list-item">
-        <label>
-          <input class="todo-list-input" type="checkbox">
-          <span>Уехать из страны</span>
-        </label>
-      </li>
-      <li class="todo-list-item">
-        <label>
-          <input class="todo-list-input" type="checkbox">
-          <span>Вдариться в бега</span>
-        </label>
-      </li>
-    </ul>
-    <p class="empty-tasks hidden">Все задачи выполнены. Новых задач нет.</p>
-    <form class="add-form" action="https://echo.htmlacademy.ru/courses" method="post">
-      <input class="add-form-input" type="text"  aria-label="Описание задачи" placeholder="Например, купить слона" required>
-      <button class="add-form-button" type="submit">Добавить задачу</button>
-    </form>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <section class="container">
+      <div class="numbers" id="numbers">
+       <a class="number1">0</a>
+      </div>
+    </section>
+   <div class="button">
+       <button id="setColor">COLOR</button>
+       <button id="setRandom">RANDOM</button>
+       
+   </div>
+   <div class="btn">
+       <div class="btn-1">
+         <label for="color">color box</label>
+         <input type="text" id="color" class="color">
+       </div>
+       <div class="btn-2">
+        <label for="boxUpper">number of boxes</label>
+        <input type="text" id="boxUpper">
+        <button for="boxUpper" class="boxOk">OK</button>
+       </div>
+      
+   </div>
+   
+    
 
-    <template id="task-template">
-      <li class="todo-list-item">
-        <label>
-          <input type="checkbox" class="todo-list-input">
-          <span></span>
-        </label>
-      </li>
-    </template>
-    <script src="script.js"></script>
-  </body>
+   
+    
+   <script src="app.js"></script> 
+</body>
 </html>
