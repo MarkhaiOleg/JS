@@ -2,55 +2,130 @@ var numbers = document.querySelector('.numbers')
 let btncolor = document.querySelector('#setColor')
 let btnRandom = document.querySelector('#setRandom')
 let boxUpper = document.querySelector('#boxUpper')
-let btnOk = document.querySelector('.boxOk')
+let btnOk = document.querySelector('.buttonOk')
 
 
 function clearBoxes(){
     numbers.innerHTML = ''
 }
 
+
+function widthContainer(){
+    let sequence = document.getElementById('boxUpper').value
+    let boxes = document.querySelectorAll('.number1')
+    let width = boxes.length
+    if (sequence == 9 ) {
+       numbers.classList.add('widthSmall')
+    } 
+    if (sequence == 4){
+       numbers.classList.add('widthMiddle')
+    }
+}
+
+function widthREmove(){
+    let sequence = document.getElementById('boxUpper').value
+    let boxes = document.querySelectorAll('.number1')
+    let width = boxes.length
+    if (sequence != 9 ) {
+       numbers.classList.remove('widthSmall')
+    } 
+    if (sequence != 4){
+       numbers.classList.remove('widthMiddle')
+    }
+}
+
+console.log(widthContainer)
+
+
 let createBox = function() {
 let sequence = document.getElementById('boxUpper').value
-    console.log(sequence)
-    console.log('clearBoxes')
-
     for(i = 0;i < sequence ;i++ ){
         let box = document.createElement('a');
         box.classList.add('number1');
         box.textContent = i + 1;
-        console.log(box)
         numbers.appendChild(box);
     } }
 
 btnOk.addEventListener('click', () => {
     clearBoxes()
+    widthContainer()
+    widthREmove()
     createBox()
 })
 
-function getRandomInt(max) {
-    return Math.floor(Math.random() * max);
-  }
+//function getRandomInt(max) {
+  //  return Math.floor(Math.random() * max);
+  //}
 
 btncolor.addEventListener('click', () => {
     let color = document.getElementById('color').value
     let boxes = document.querySelectorAll('.number1')
-    console.log(color)
     for(i = 0;i < boxes.length;i++){
         boxes[i].style.backgroundColor= color;
     }
 })
 
+function getRandomIntInclusive(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min; //Максимум и минимум включаются (взято с MSDN)
+  }
+
+
+
+  /* рандомный цвет по нажатию на кнопку */
+  btnRandom.addEventListener('click', () => {
+    let boxes = document.querySelectorAll('.number1')
+  function random_rgba() {
+    /* функция для генерирования рандомного rgba цвета*/
+    var o = Math.round, r = Math.random, s = 255;
+    return 'rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ',' + r().toFixed(1) + ')';
+    }
+    var color = random_rgba();
+    /* рандомно задается цвет элементу */
+    for(i = 0;i < boxes.length;i++){
+        boxes[i].style.backgroundColor = color
+    }
+  })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 btnRandom.addEventListener('click', () => {
         let boxes = document.querySelectorAll('.number1')
         let arrayColor = [ 'gray' ,'silver' ,'beige ','beige ' ,'golden' ,'turquoise' ,'emerald' ,'coral' ,'olive' ,'lilac' ,'amber' ,'sand' ,'vinous' ,'сhocolate' ,'ivory' ,'salmon' ,'lavender' ,'plum' ,'maroon' ,'crimson']
-        console.log(arrayColor.length)
         let item = arrayColor[getRandomInt(20)]
         console.log(arrayColor[item])
         for(i = 0;i < boxes.length;i++){
             boxes[i].style.backgroundColor = item;
+            return console.log(item)
         }
+        
 })
-
+*/
 
 /*
  function clearBoxes(){
@@ -58,9 +133,6 @@ btnRandom.addEventListener('click', () => {
         numbers.removeChild(numbers.firstElementChild)
      }
  */
-
-
-
 
 /*
   btnOk.addEventListener('click', () => {
@@ -87,8 +159,7 @@ btnRandom.addEventListener('click', () => {
         boxes[i].style.backgroundColor = key;
     }
 })*/
-
-    
+ 
 /*
 btnRandom.addEventListener('click', () => {
     let arrayColor = [ 'gray' ,'silver' ,'beige ','beige ' ,'golden' ,'turquoise' ,'emerald' ,'coral' ,'olive' ,'lilac' ,'amber' ,'sand' ,'vinous' ,'сhocolate' ,'ivory' ,'salmon' ,'lavender' ,'plum' ,'maroon' ,'crimson']
@@ -100,11 +171,6 @@ btnRandom.addEventListener('click', () => {
     
 })
   */
-
-
-
-
-
 
 /*
 btnGreen.addEventListener('click',() => boxes.style.backgroundColor='#50ff32')
