@@ -1,41 +1,47 @@
-var list = document.querySelector('.todo-list');
-var items = list.children;
-var emptyListMessage = document.querySelector('.empty-tasks');
-var newItemForm = document.querySelector('.add-form');
-var newItemTitle = newItemForm.querySelector('.add-form-input');
-var taskTemplate = document.querySelector('#task-template').content;
-var newItemTemplate = taskTemplate.querySelector('.todo-list-item');
+let position = 0;
+const slidesToShow = 1;
+const slidesToScroll = 1;
+const container = document.getElementById('main');
+const track = document.querySelector('.slider-track');
+//const item = document.querySelector('.slider-item')
+const btnPrev = document.querySelector('.btn-prev');
+const btnNext = document.querySelector('.btn-next');
+const items = document.querySelectorAll('.slider-item')
+const itemsCount = items.length;
+const itemWidth = container.clientWidth / slidesToShow;
+const movePosition = slidesToScroll * itemWidth;
 
-var toggleEmptyListMessage = function () {
-  if (items.length === 0) {
-    emptyListMessage.classList.remove('hidden');
-  } else {
-    emptyListMessage.classList.add('hidden');
-  }
-};
 
-var addCheckHandler = function (item) {
-  var checkbox = item.querySelector('.todo-list-input');
-  checkbox.addEventListener('change', function () {
-    item.remove();
-    toggleEmptyListMessage();
-  });
-};
-
-for (var i = 0; i < items.length; i++) {
-  addCheckHandler(items[i]);
-}
-
-newItemForm.addEventListener('submit', function (evt) {
-  evt.preventDefault();
-
-  var taskText = newItemTitle.value;
-  var task = newItemTemplate.cloneNode(true);
-  var taskDescription = task.querySelector('span');
-  taskDescription.textContent = taskText;
-  addCheckHandler(task);
-
-  list.appendChild(task);
-  toggleEmptyListMessage();
-  newItemTitle.value = '';
+items.forEach((item) => {
+    item.style.minWidth = `${itemWidth}px`;
 });
+
+btnNext.addEventListener( 'click' , () => {
+  const itemsLeft = itemsCount - (Math.abs(position) + slidesToShow * itemWidth) / itemWidth;
+
+  position -= itemsLeft >= slidesToScroll ? movePosition : itemsLeft * itemWidth;
+
+  setPosition();
+  checkBtns();
+});
+
+btnPrev.addEventListener( 'click', () =>{
+
+ const itemsLeft = Math.abs(position) / itemWidth;
+
+ position += itemsLeft >= slidesToScroll ? movePosition : itemsLeft * itemWidth;
+
+ setPosition();
+  checkBtns();
+});
+
+const setPosition = () => {
+    track.style.transform = `translateX(${position}px)`;
+};
+
+const checkBtns = () => {
+    btnPrev.disabled = position === 0;
+    btnNext.disabled = position <= -(itemsCount - slidesToShow) * itemWidth;
+};
+
+checkBtns();
