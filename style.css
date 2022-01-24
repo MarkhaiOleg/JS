@@ -1,44 +1,58 @@
-/* Общие */
-::before,
-::after{
+*{
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
-.wrapper{
-    width: 305px;
-    margin: 0 auto;
-}
-/* слайдер */
-
-.slider-container{
-    
-overflow: hidden;
-background-color: red ;
-}
-
-.slider-track{
-    display: flex;
-    background-color: yellow;
-    transition: .0,2s;
-}
-
-.slider-item{
-    height: 230px;
-    
-}
-
-.slider-buttons{
-    text-align: center ;
-    margin-top: 50px;
-    
+body{
+height: 100vh;
+background: #74ebd5;
+background: -webkit-linear-gradient(
+    to right,
+    #acb6e5,
+    #74ebd5
+);
+background: linear-gradient(to right, #acb6e5,#74ebd5);
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
 }
 
 
-/*
-.slider-item:nth-child(3n + 1){background-color: red;}
+section{
+    display: grid;
+    grid-template-columns: repeat(4, 8rem);
+    grid-template-rows: repeat(4, 8rem);
+    grid-gap:2rem;
+    perspective: 350px;
+}
 
-.slider-item:nth-child(3n + 2){background-color: green;}
+.card {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: all 2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: rgba(0,0,0,0.2) 0px 5px 15px;
+}
 
-.slider-item:nth-child(3n + 3){background-color: blue;}
-*/
+.face,
+.back{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    pointer-events: none;
+}
 
+.back {
+    background: #fff;
+    backface-visibility: hidden;
+}
+
+.toggleCard {
+    transform:rotateY(180deg);
+}
+
+.face {
+    transform: rotateY(-180deg);
+}
+ 

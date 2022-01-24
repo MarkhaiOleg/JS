@@ -1,47 +1,119 @@
-let position = 0;
-const slidesToShow = 1;
-const slidesToScroll = 1;
-const container = document.getElementById('main');
-const track = document.querySelector('.slider-track');
-//const item = document.querySelector('.slider-item')
-const btnPrev = document.querySelector('.btn-prev');
-const btnNext = document.querySelector('.btn-next');
-const items = document.querySelectorAll('.slider-item')
-const itemsCount = items.length;
-const itemWidth = container.clientWidth / slidesToShow;
-const movePosition = slidesToScroll * itemWidth;
+const section = document.querySelector('section');
+const playerLivesCount = document.querySelector('span');
+let playerLives = 6;
 
+// link text
+playerLivesCount.textContent = playerLives;
 
-items.forEach((item) => {
-    item.style.minWidth = `${itemWidth}px`;
-});
+// generate the data
+const getData = () => [
+    {imgSrc: "images/beatles2.jpg" , name: "beatles"},
+    {imgSrc: "images/daftpank.jpg" , name: "daftpank"},
+    {imgSrc: "images/gorillaz.jpg" , name: "gorillaz"},
+    {imgSrc: "images/ledzeppelin.jpg" , name: "ledzeppelin"},
+    {imgSrc: "images/nirvana.jpg" , name: "nirvana"},
+    {imgSrc: "images/pinkFloid.jpg" , name: "pinkFloid"},
+    {imgSrc: "images/redHot.jpg" , name: "redHot"},
+    {imgSrc: "images/riotdivision.jpg" , name: "riotdivision"},
+    {imgSrc: "images/beatles2.jpg" , name: "beatles"},
+    {imgSrc: "images/daftpank.jpg" , name: "daftpank"},
+    {imgSrc: "images/gorillaz.jpg" , name: "gorillaz"},
+    {imgSrc: "images/ledzeppelin.jpg" , name: "ledzeppelin"},
+    {imgSrc: "images/nirvana.jpg" , name: "nirvana"},
+    {imgSrc: "images/pinkFloid.jpg" , name: "pinkFloid"},
+    {imgSrc: "images/redHot.jpg" , name: "redHot"},
+    {imgSrc: "images/riotdivision.jpg" , name: "riotdivision"},
+];
 
-btnNext.addEventListener( 'click' , () => {
-  const itemsLeft = itemsCount - (Math.abs(position) + slidesToShow * itemWidth) / itemWidth;
+//randomize
 
-  position -= itemsLeft >= slidesToScroll ? movePosition : itemsLeft * itemWidth;
+const randomize = () => {
+    const cardData = getData();
+    cardData.sort(() => Math.random() - 0.5);
+    return cardData;
+}
 
-  setPosition();
-  checkBtns();
-});
+// card generator function
+const cardGenerator = () => {
+    const cardData = randomize();
+    //generate the html
+    cardData.forEach(item => {
+    const card = document.createElement("div");
+    const face = document.createElement("img");
+    const back = document.createElement("div");
+    card.classList = "card";
+    face.classList = "face";
+    back.classList = "back";
+    //attach the info to the cards
+    face.src = item.imgSrc;
+    card.setAttribute("name", item.name);
+    // attach the cards yo the section
+    section.appendChild(card);
+    card.appendChild(face);
+    card.appendChild(back);
 
-btnPrev.addEventListener( 'click', () =>{
-
- const itemsLeft = Math.abs(position) / itemWidth;
-
- position += itemsLeft >= slidesToScroll ? movePosition : itemsLeft * itemWidth;
-
- setPosition();
-  checkBtns();
-});
-
-const setPosition = () => {
-    track.style.transform = `translateX(${position}px)`;
+    card.addEventListener('click', (e) => {
+    card.classList.toggle("toggleCard");
+    checkCards(e)
+    })
+  });
 };
 
-const checkBtns = () => {
-    btnPrev.disabled = position === 0;
-    btnNext.disabled = position <= -(itemsCount - slidesToShow) * itemWidth;
+//check cards
+const checkCards = (e) => {
+    const clickedCard = e.target;
+    clickedCard.classList.add("flipped")
+    const flippedCards = document.querySelectorAll(".flipped");
+    const toggleCards = document.querySelectorAll(".toggleCard");
+   //logic
+   if(flippedCards.length === 2){
+       if(
+       flippedCards[0].getAttribute('name') === 
+       flippedCards[1].getAttribute('name')
+       ) {
+        console.log("match");
+        flippedCards.forEach(card => {
+            card.classList.remove('flipped');
+            card.style.pointerEvents = "none";
+        })
+    } else {
+        console.log("wrong");
+        flippedCards.forEach( card => {
+            card.classList.remove("flipped");
+            setTimeout(() => card.classList.remove("toggleCard"),1400)
+        });
+        playerLives--;
+        playerLivesCount.textContent = playerLives;
+        if (playerLives === 0) {
+            restart("try again");
+      }
+    }
+  }
+  //Run a check to see if we won the game
+  if(toggleCard.length === 16){
+      restart("you won");
+  } else {restart("try again");}
 };
 
-checkBtns();
+//Restart
+const restart = (text) => {
+    let cardData  = randomize();
+    let faces = document.querySelectorAll(".face");
+    let cards = document.querySelectorAll(".card");
+    section.style.pointerEvents = "none";
+    cardData.forEach((item, index) => {
+        cards[index].classList.remove("toggleCard");
+        // randomize
+        setTimeout(() => {
+        cards[index].style.pointerEvents = "all";
+        faces[index].src = item.imgSrc;
+        cards[index].setAttribute("name", item.name);
+        section.style.pointerEvents = "all";
+        },1000);
+    });
+    playerLives = 6;
+    playerLivesCount.textContent = playerLives;
+    setTimeout(() => window.alert(text),100);
+};
+
+cardGenerator();
